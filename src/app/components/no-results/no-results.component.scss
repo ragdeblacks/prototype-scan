@@ -1,0 +1,14 @@
+.group-card-error{
+    margin-top: 30%;
+    margin-bottom: 40%;
+    text-align: -webkit-center;
+    .description-no-result{
+        font-family: Poppins-SemiBold;
+        color: var(--ion-color-podemos-level-four);
+        font-size: 20px;
+    }
+    .icon-no-result{
+        color: var(--ion-color-podemos-level-four) !important;
+        font-size: 40px;
+    }
+}

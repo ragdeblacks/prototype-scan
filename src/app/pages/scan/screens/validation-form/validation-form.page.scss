@@ -1,0 +1,111 @@
+.consultation {
+    .consultation-card {
+        border: 1px solid #9c9c9c;
+        border-radius: 20px;
+        margin-top: 30px;
+        margin-bottom: 5px;
+        margin-left: 40px;
+        margin-right: 40px;
+    }
+
+    &-icon-title {
+        padding-top: 1px;
+    }
+
+    .consultation-row-title {
+        padding-left: 5px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+
+        .consultation-col-icon {
+            align-self: center;
+            text-align: -webkit-center;
+            padding-top: 2px;
+        }
+    }
+
+    &-content-title {
+        padding-top: 5px;
+        padding-right: 5px;
+        padding-bottom: 5px;
+    }
+
+    &-title {
+        font-size: 17px;
+        color: var(--ion-color-podemos-level-ten);
+        font-family: Poppins-Regular;
+    }
+
+    .item-input {
+        font-size: smaller;
+        position: relative;
+        border: 1px solid #9c9c9c;
+        border-radius: 5px;
+        --width: 100%;
+    }
+
+    .ion-date {
+        font-size: smaller;
+    }
+
+    .col-input {
+        padding-left: 13px;
+        padding-right: 13px;
+        padding-bottom: 8px;
+        padding-top: 5px;
+    }
+
+    .form-item {
+        --min-height: 30px;
+
+        &-label {
+            font-family: Poppins-Light;
+        }
+
+        &-input {
+            text-transform: capitalize;
+        }
+
+    }
+
+    .error-input {
+        .error-msg {
+            padding-left: 10px;
+            padding-top: 4px;
+            font-size: smaller;
+            font-family: Poppins-SemiBold;
+        }
+
+    }
+
+    .button-consultation {
+        --color: #fff !important;
+        --ion-color-contrast: #fff !important;
+        font-family: Poppins-ExtraBolt;
+    }
+
+}
+
+.button-edit-colony {
+    align-self: center;
+}
+
+.button-accept-edit {
+    padding-top: 4px;
+}
+
+.form-item {
+    font-size: smaller;
+    position: relative;
+    border: 1px solid #9c9c9c;
+    border-radius: 10px;
+    --width: 100%;
+
+    &-label {
+        font-family: Poppins-Light;
+    }
+
+    &-input {
+        text-transform: uppercase;
+    }
+}

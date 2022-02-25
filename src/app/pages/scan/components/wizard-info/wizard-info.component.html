@@ -1,0 +1,116 @@
+<ion-slides *ngIf="wizardShow" mode="ios" pager="true">
+  <ion-slide>
+    <ion-grid class="contenedor-b" fixed>
+      <ion-row>
+        <ion-col size="7">
+          <div class="ion-text-justify ion-padding text-b">
+            <strong>
+              1. Asegurate que la captura enfoque en especifico esta area, el resto no es necesario
+            </strong>
+          </div>
+        </ion-col>
+        <ion-col size="5">
+          <div class="ion-text-justify ion-padding text-a">
+            <ion-img src="/assets/imgs/ineCapture.png"></ion-img>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-no-margin ion-no-padding">
+        <ion-col size="12" class="ion-no-margin ion-no-padding">
+          &nbsp;
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="5">
+          <ion-row class="ion-no-margin ion-no-padding">
+            <ion-col size="12" class="ion-no-margin ion-no-padding">
+              <ion-img src="/assets/imgs/ineCapture.png"></ion-img>
+            </ion-col>
+          </ion-row>
+          <ion-row class="ion-no-margin ion-no-padding">
+            <ion-col size="12" class="ion-no-margin ion-no-padding content-ine-b">
+              <ion-img src="/assets/imgs/ineCapture_b.png" class="ine-b"></ion-img>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+        <ion-col size="7">
+          <ion-row class="ion-no-margin ion-no-padding">
+            <ion-col size="12" class="ion-no-margin ion-no-padding">
+              <div class="ion-text-justify ion-padding text-b">
+                <strong>
+                  2. Para una captura efectiva asegurate que la imagen tenga una posicion adecuada como las siguientes:
+                </strong>
+              </div>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col size="2">
+            </ion-col>
+            <ion-col size="6" class="content-ine-c">
+              <ion-img src="/assets/imgs/ineCapture_c.png" class="ine-c"></ion-img>
+            </ion-col>
+            <ion-col size="4" class="content-ine-d">
+              <strong>X</strong>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+      </ion-row>
+      <ion-row class="content-ine-e">
+        <ion-col size="12">
+          &nbsp;
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-slide>
+  <ion-slide>
+    <ion-grid fixed class="contenedor-b">
+      <ion-row>
+        <ion-col size="12">
+          <div class="ion-text-justify ion-padding text-b">
+            <strong>
+              3. Una buena captura debe de estar alineada con el limite del foco de la camara para garantizar el
+              correcto funcionamiento
+            </strong>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col size="12" class="content-format-phone">
+          <ion-img src="/assets/imgs/format_photo.png" class="format-phone"></ion-img>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-no-margin ion-no-padding">
+        <ion-col size="12" class="ion-no-margin ion-no-padding">
+          &nbsp;
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-slide>
+  <ion-slide>
+    <ion-grid fixed class="contenedor-b">
+      <ion-row>
+        <ion-col size="12">
+          <div class="ion-text-justify ion-padding text-c">
+            <strong>
+              Recuerda que es importante que la foto sea lo mas legible posible y sin brillo o hologramas visibles en la
+              captura para mejores resultados
+            </strong>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-no-margin ion-no-padding">
+        <ion-col size="12" class="ion-no-margin ion-no-padding">
+          &nbsp;
+        </ion-col>
+      </ion-row>
+      <ion-row class="ion-text-center">
+        <ion-col>
+          <ion-button color="morena" class="button-grabber" (click)="changeStatusWizard()">
+            <ion-icon name="camera-outline"></ion-icon>
+            <ion-label>Tomar Fotografia</ion-label>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-slide>
+</ion-slides>

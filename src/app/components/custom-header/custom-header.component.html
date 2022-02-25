@@ -1,0 +1,23 @@
+<ion-header class="principal-header-custom" mode="ios" >
+  <ion-toolbar [color]="color" class="toolbar-header">
+    <ion-grid class="ion-no-padding">
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="2" class="ion-no-padding" [ngClass]="{'icon-center': buttonType==='icon'}">
+          <ion-menu-button *ngIf="buttonType==='menu'" [color]="textColor==''?'dark':textColor"></ion-menu-button>
+          <ion-button class="back-button" (click)="onBack()" color="light" *ngIf="buttonType==='back'">
+            <ion-icon [color]="textColor==''?'dark':textColor" class="icon-button" name="chevron-back-outline"></ion-icon>
+          </ion-button>
+          <ion-button class="back-button" color="light" *ngIf="buttonType==='icon'">
+            <ion-img src="assets/icon/logo_v2014.ico"></ion-img>
+          </ion-button>
+        </ion-col>
+        <ion-col class="ion-align-self-center" *ngIf="title!==''" >
+          <ion-title [color]="textColor==''?'dark':textColor" class="ion-no-padding ion-text-left">{{ title }}</ion-title>
+        </ion-col>
+        <ion-col size="2" >
+        </ion-col>
+      </ion-row>
+      
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>

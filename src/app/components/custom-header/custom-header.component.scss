@@ -1,0 +1,22 @@
+.principal-header-custom{
+    box-shadow: none;
+    --box-shadow: none;
+    .back-button{
+        --box-shadow: none;
+        --ion-color-base: none !important;
+        --padding-end: 5px;	
+        --padding-start: 5px;
+        margin-top: 1px;
+        margin-bottom: 1px;
+    }
+    .toolbar-header{
+        --box-shadow: none;
+    }
+    .icon-button{
+        font-size: 30px;
+    }
+    .icon-center{
+        text-align-last: center;
+    }
+}
+

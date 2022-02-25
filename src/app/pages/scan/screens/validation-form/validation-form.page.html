@@ -1,0 +1,191 @@
+<app-header-tab-custom typeTab="scan" [titleDescription]="title" [optionSelect]="optionSelect">
+</app-header-tab-custom>
+<ion-content class="consultation" color="light">
+    <ion-card class="consultation-card">
+        <ion-card-content>
+            <form #form="ngForm" [formGroup]="userProspect">
+                <ion-grid class="ion-no-padding" color="primary">
+                    <ion-row>
+                        <ion-col size="12" class="col-input">
+                            <app-form-input [errorMessage]="errorMessage" labelText="CURP" controlName="CURP"
+                                typeInput="text" [errors]="CURP.errors" [dirty]="CURP.dirty" [myForm]="userProspect"
+                                [objForm]="CURP" (addRFC)="upperCase($event)"></app-form-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12" class="col-input">
+                            <app-form-input [errorMessage]="errorMessage" labelText="Nombres" controlName="names"
+                                typeInput="text" [errors]="names.errors" [dirty]="names.dirty" [myForm]="userProspect">
+                            </app-form-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12" class="col-input">
+                            <app-form-input [errorMessage]="errorMessage" labelText="Apellido Paterno"
+                                controlName="lastName" typeInput="text" [errors]="lastName.errors"
+                                [dirty]="lastName.dirty" [myForm]="userProspect">
+                            </app-form-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12" class="col-input">
+                            <app-form-input [errorMessage]="errorMessage" labelText="Apellido Materno"
+                                controlName="surname" typeInput="text" [errors]="surname.errors" [dirty]="surname.dirty"
+                                [myForm]="userProspect">
+                            </app-form-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12" class="col-input">
+                            <ion-item class="form-item" lines="none" [formGroup]="userProspect">
+                                <ion-label position="floating">
+                                    <ion-icon name="calendar-number-outline"></ion-icon>
+                                    Fecha de Nacimiento
+                                </ion-label>
+                                <ion-datetime
+                                    monthShortNames="Ene, Feb, Mar, Abr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec"
+                                    displayFormat="DD-MMM-YYYY" mode="ios" formControlName="birthday"
+                                    [pickerOptions]="customPickerOptions" display-timezone="utc"></ion-datetime>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12" class="col-input">
+                            <app-form-input [errorMessage]="errorMessage" labelText="RFC" controlName="RFC"
+                                typeInput="text" [disabledInput]="true" [errors]="RFC.errors" [dirty]="RFC.dirty"
+                                [myForm]="userProspect">
+                            </app-form-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12" class="col-input">
+                            <app-form-input [errorMessage]="errorMessage" labelText="Código Postal" controlName="CP"
+                                typeInput="tel" [brmaskerInputl]="{mask:'00000', len:5}" [errors]="CP.errors"
+                                [dirty]="CP.dirty" [myForm]="userProspect"
+                                (onquerySepomex)="querySepomex($event.data.target.value)">
+                            </app-form-input>
+                        </ion-col>
+
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12" class="col-input">
+                            <app-form-input [errorMessage]="errorMessage" labelText="Ciudad" controlName="city"
+                                typeInput="text" [errors]="city.errors" [dirty]="city.dirty" [myForm]="userProspect">
+                            </app-form-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12" class="col-input">
+                            <app-form-select [errorMessage]="errorMessage.state" labelText="Estado" controlName="state"
+                                [errors]="errorState" [myForm]="userProspect" [objForm]="state"
+                                [valueSelect]="stateValue" [listSelect]="states"></app-form-select>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12" class="col-input">
+                            <app-form-input [errorMessage]="errorMessage" labelText="Delegación o Municipio"
+                                controlName="delegationMunicipality" typeInput="text"
+                                [errors]="delegationMunicipality.errors" [dirty]="delegationMunicipality.dirty"
+                                [myForm]="userProspect"></app-form-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="!colonyFilter">
+                        <ion-col size="12" class="col-input">
+                            <app-form-input [errorMessage]="errorMessage" labelText="Colonia o Población"
+                                controlName="suburbPopulation" typeInput="text" [errors]="suburbPopulation.errors"
+                                [dirty]="suburbPopulation.dirty" [myForm]="userProspect"></app-form-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row *ngIf="colonyFilter">
+                        <ion-col size="7" class="col-input" *ngIf="colNormal">
+                            <app-form-select [errorMessage]="errorMessage.suburbPopulation"
+                                labelText="Colonia o Población" controlName="suburbPopulation" [errors]="errorColony"
+                                [myForm]="userProspect" [objForm]="suburbPopulation" [valueSelect]="colonyValue"
+                                [listSelect]="colonyElements">
+                            </app-form-select>
+                        </ion-col>
+                        <ion-col size="8" class="col-input" *ngIf="!colNormal">
+                            <app-form-input [errorMessage]="errorMessage" labelText="Colonia o Población"
+                                controlName="suburbPopulation" typeInput="text" [disabledInput]="disabledColony"
+                                [errors]="suburbPopulation.errors" [dirty]="suburbPopulation.dirty"
+                                [myForm]="userProspect">
+                            </app-form-input>
+                        </ion-col>
+
+                        <ion-col size="4" class="button-edit-colony" *ngIf="colNormal">
+                            <ion-button shape="round" class="button-consultation" color="podemos" expand="full"
+                                size="small" type="button" (click)="editColony()">Editar</ion-button>
+                        </ion-col>
+                        <ion-col size="2" class="button-accept-edit" *ngIf="!colNormal ">
+                        </ion-col>
+                        <ion-col size="2" class="button-accept-edit" *ngIf="!colNormal">
+                            <ion-fab>
+                                <ion-fab-button color="danger" (click)="cancelEdit()">
+                                    <ion-icon name="close-outline"></ion-icon>
+                                </ion-fab-button>
+                            </ion-fab>
+                        </ion-col>
+
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12" class="col-input">
+                            <app-form-input [errorMessage]="errorMessage" labelText="Dirección" controlName="address"
+                                typeInput="text" [errors]="address.errors" [dirty]="address.dirty"
+                                [myForm]="userProspect">
+                            </app-form-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12" class="col-input">
+                            <app-form-input [errorMessage]="errorMessage" labelText="Teléfono" controlName="phone"
+                                typeInput="tel" [errors]="phone.errors" [dirty]="phone.dirty" [myForm]="userProspect">
+                            </app-form-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12" class="col-input">
+                            <app-form-input [errorMessage]="errorMessage" labelText="Correo Electronico" controlName="email"
+                                typeInput="email" [errors]="email.errors" [dirty]="email.dirty" [myForm]="userProspect">
+                            </app-form-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12" class="col-input">
+                            <app-form-input [errorMessage]="errorMessage" labelText="Link de Facebook" controlName="facebook"
+                                typeInput="text" [errors]="facebook.errors" [dirty]="facebook.dirty" [myForm]="userProspect">
+                            </app-form-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12" class="col-input">
+                            <app-form-input [errorMessage]="errorMessage" labelText="Etnia" controlName="etnia"
+                                typeInput="text" [errors]="etnia.errors" [dirty]="etnia.dirty" [myForm]="userProspect">
+                            </app-form-input>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+                        <ion-col size="12" class="col-input">
+                            <app-form-input [errorMessage]="errorMessage" labelText="Lengua Indígena" controlName="lengua"
+                                typeInput="text" [errors]="lengua.errors" [dirty]="lengua.dirty" [myForm]="userProspect">
+                            </app-form-input>
+                        </ion-col>
+                    </ion-row>
+
+                </ion-grid>
+            </form>
+        </ion-card-content>
+    </ion-card>
+    <ion-grid>
+        <ion-row class="ion-text-center ion-padding-bottom">
+            
+            <ion-col size="12">
+                <ion-button disabled="{{!userProspect.valid}}" expand="block" shape="outline" color="morena"
+                    class="button-grabber" (click)="loadAnotherItem(0)">
+                    Terminar
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+</ion-content>
+<app-custom-footer></app-custom-footer>

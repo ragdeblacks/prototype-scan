@@ -1,0 +1,14 @@
+<ion-item class="form-item" lines="none" mode="md" [formGroup]="myForm"  [ngClass]="{'is-invalid': errors && dirty}">
+  <ion-label class="form-item-label" position="floating">{{labelText}}</ion-label>
+  <ion-input class="form-item-input" 
+    [attr.brmasker]="(brmaskerInputl=== {})? false : brmaskerInputl" 
+    [attr.disabled]="disabledInput" 
+    formControlName="{{controlName}}" 
+    (ionChange)="(labelText==='CURP')? upperCase(objForm.value) : ''"
+    (keyup)="(controlName==='CP')? querySepomex($event) : ''"
+    [attr.maxlength]="(controlName==='CP') ? '5' : null"
+    [type]="typeInput" ></ion-input>
+</ion-item>
+<ion-note *ngIf="errors && dirty" class="error-input" color="danger">
+<p class="ion-no-padding ion-no-margin error-msg">{{getError(controlName)}}</p>
+</ion-note>

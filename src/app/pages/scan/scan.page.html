@@ -1,0 +1,17 @@
+<app-header-tab-custom typeTab="scan" [titleDescription]="title" [optionSelect]="optionSelect">
+</app-header-tab-custom>
+<ion-content>
+    <app-capture [IMAGE_PATH]="IMAGE_PATH" [wizardShow]="wizardShow" [showText]="showText" [dataPersonal]="dataPersonal"
+        (ongoToMember)="goToMember()" (ongoToGrabber)="goToGrabber()" (onscan)="scan()"></app-capture>
+    <app-wizard-info [wizardShow]="wizardShow" (onchangeStatusWizard)="changeStatusWizard()"></app-wizard-info>
+    <ion-grid fixed class="next-step" *ngIf="!wizardShow">
+        <ion-row>
+            <ion-col size="12">
+                <ion-button (click)="skipScan()" color="morena" expand="block" fill="outline" shape="round">
+                    Capturar Manualmente
+                </ion-button>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+</ion-content>
+<app-custom-footer [buttonBack]="false"></app-custom-footer>

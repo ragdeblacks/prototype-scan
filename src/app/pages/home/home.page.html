@@ -1,0 +1,45 @@
+<app-header-tab-custom typeTab="Normal" title="Menu Principal" [titleDescription]="title" >
+</app-header-tab-custom>
+
+<ion-content>
+  <ion-grid class="buttons-list">
+    <ion-row class=" ion-justify-content-center ion-align-items-center">
+      <ion-col size="12">
+        <ion-button color="morena" (click)="goToScan()" class="button-element"  expand="full" size="large" fill="outline" shape="round">
+          <ion-grid fixed>
+            <ion-row >
+              <ion-col class="ion-padding" size="12">
+                <ion-icon class="buttons-icon" name="people-circle-outline"></ion-icon>
+              </ion-col >
+              <ion-col  size="12">
+                <ion-text >
+                  <h4>Nuevo Registro</h4>
+                </ion-text>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-button>
+      </ion-col>
+      
+    </ion-row>
+    <ion-row>
+      <ion-col size="12">
+        <ion-button class="button-element" (click)="goToManual()" color="morena" expand="block" fill="outline" shape="round">
+          <ion-grid fixed>
+            <ion-row>
+              <ion-col size="12" class="ion-padding">
+                <ion-icon class="buttons-icon" name="create-outline"></ion-icon>
+              </ion-col>
+              <ion-col size="12" >
+                <ion-text >
+                  <h4>Editar Registro</h4>
+                </ion-text>
+                
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

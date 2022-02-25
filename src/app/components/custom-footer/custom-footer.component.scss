@@ -1,0 +1,24 @@
+.footer-tab::before {
+    background-image: none;
+}
+
+.footer-tab {
+    background-color: var(--ion-color-light) !important;
+}
+
+.toolbar-footer-tab {
+    background-color: var(--ion-color-morena) !important;
+    padding-top: 1%;
+    padding-left: 6%;
+    padding-right: 6%;
+    padding-bottom: 1%;
+    border-top-left-radius: 40px;
+    box-shadow: 3px -2px 7px 0px rgba(0, 0, 0, 0.84);
+    -webkit-box-shadow: 3px -2px 7px 0px rgba(0, 0, 0, 0.84);
+    -moz-box-shadow: 3px -2px 7px 0px rgba(0, 0, 0, 0.84);
+
+    ion-button {
+        --color: #fff;
+    }
+
+}

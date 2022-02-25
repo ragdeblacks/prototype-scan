@@ -1,0 +1,34 @@
+{
+    "menu": [
+        {
+            "title": "Inicio",
+            "url": "/prototype/home",
+            "icon": "home"
+        },
+        {
+            "title": "Nuevo Registro",
+            "url": "/prototype/scan",
+            "icon": "people-circle-outline"
+        },
+        {
+            "title": "Editar Registro",
+            "url": "/prototype/scan/validation-form",
+            "icon": "create-outline"
+        },
+        {
+            "title": "Notificaciones",
+            "url": "/spore/cuentas",
+            "icon": "notifications-outline"
+        },
+        {
+            "title": "Terminos/Politicas",
+            "url": "/spore/grupos-digitalizacion",
+            "icon": "document-lock-outline"
+        },
+        {
+            "title": "Cerrar Sesion",
+            "url": "/",
+            "icon": "log-out"
+        }
+    ]
+}

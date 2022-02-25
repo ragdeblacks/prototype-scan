@@ -1,0 +1,9 @@
+<ion-item class="form-item" lines="none" mode="md" [formGroup]="myForm"  [ngClass]="{'is-invalid': errors}">
+  <ion-label class="form-item-label" position="floating">{{labelText}}</ion-label>
+  <ion-select [attr.disabled]="disabledSelect" formControlName="{{controlName}}" [value]="valueSelect" (ionChange)="validSelector()">
+    <ion-select-option *ngFor="let e of listSelect" [value]="e.value">{{e.nombre}}</ion-select-option>
+  </ion-select>
+</ion-item>
+<ion-note *ngIf="errors" class="error-input" color="danger">
+<p class="ion-no-padding ion-no-margin error-msg">{{this.errorMessage}}</p>
+</ion-note>

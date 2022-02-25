@@ -1,0 +1,11 @@
+<ion-footer class="footer-tab">
+  <div class="toolbar-footer-tab" color="morena">
+    <ion-button *ngIf="buttonBack" fill="clear" (click)="returnBack()">
+      <ion-icon name="arrow-back-outline"></ion-icon>
+      Volver
+    </ion-button>
+    <ion-button *ngIf="!buttonBack" fill="clear">
+      <ion-icon ></ion-icon>
+    </ion-button>
+  </div>
+</ion-footer>

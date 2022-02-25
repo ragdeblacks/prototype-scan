@@ -1,0 +1,52 @@
+.button-grabber{
+    --color: #fff !important;
+    --ion-color-contrast: #fff !important;
+    font-family: Poppins-ExtraBolt;
+}
+.contenedor-a{
+    background-color: var(--ion-color-podemos);
+    .text-a{
+        font-family: Poppins-Light;
+        color: #fff !important;
+    }
+
+}
+.contenedor-b{
+    ion-col{
+        align-self: center;
+    }
+    .text-b{
+        font-family: Poppins-ExtraLight;
+        font-size:x-small;
+    }
+    .text-c{
+        font-family: Poppins-ExtraLight;
+        font-size: small;
+    }
+}
+.content-ine-b{
+    text-align: -webkit-center;
+    .ine-b{
+        width: 50% !important;
+    }
+}
+.content-ine-c{
+    text-align: -webkit-right;
+    .ine-c{
+        width: 50% !important;
+    }
+}
+.content-ine-d{
+    text-align: -webkit-left;
+    color: red;
+    font-size:larger;
+}
+.content-ine-e{
+    padding-bottom: 50px;
+}
+.content-format-phone{
+    text-align: -webkit-center;
+    .format-phone{
+        width: 70% !important;
+    }
+}

@@ -1,0 +1,86 @@
+<ion-grid fixed class="grid-capture" *ngIf="!wizardShow">
+  <ion-row *ngIf="!IMAGE_PATH">
+    <ion-col size="12">
+      <ion-img src="/assets/imgs/ineCapture.png"></ion-img>
+    </ion-col>
+  </ion-row>
+  <ion-row *ngIf="IMAGE_PATH" class="grabber-photo ion-no-padding ion-no-margin">
+    <ion-col class="ion-no-padding ion-no-margin">
+      <img [src]="IMAGE_PATH">
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-text-center">
+    <ion-col>
+      <ion-button size="small" expand="block" shape="round" fill="outline" color="morena-shade" class="button-grabber"
+        (click)="goToGrabber()">
+        Tomar Fotografia
+      </ion-button>
+    </ion-col>
+    <ion-col>
+      <ion-button size="small" expand="block" shape="round" fill="outline" color="morena-tint" class="button-grabber"
+        (click)="scan()">
+        <ion-label>Obtener Texto</ion-label>
+      </ion-button>
+    </ion-col>
+  </ion-row>
+
+  <ion-row class="ion-no-padding" *ngIf="showText">
+    <ion-col size="4" class="text-header ion-text-center">
+      <ion-label><strong>Nombre</strong></ion-label>
+    </ion-col>
+    <ion-col class="text-content">
+      <ion-label>{{dataPersonal.nameComplete}}</ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-no-padding" *ngIf="showText">
+    <ion-col size="2" class="text-header ion-text-center">
+      <ion-label><strong>CURP</strong></ion-label>
+    </ion-col>
+    <ion-col size="4" class="text-content">
+      <ion-label>{{dataPersonal.curp}}</ion-label>
+    </ion-col>
+    <ion-col size="3" class="text-header ion-text-center">
+      <ion-label><strong>Nacimiento</strong></ion-label>
+    </ion-col>
+    <ion-col size="3" class="text-content">
+      <ion-label>{{dataPersonal.birthday}}</ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-no-padding" *ngIf="showText">
+    <ion-col size="2" class="text-header ion-text-center">
+      <ion-label><strong>Calle</strong></ion-label>
+    </ion-col>
+    <ion-col size="6" class="text-content">
+      <ion-label>{{dataPersonal.street}}</ion-label>
+    </ion-col>
+    <ion-col size="2" class="text-header ion-text-center">
+      <ion-label><strong>CP</strong></ion-label>
+    </ion-col>
+    <ion-col size="2" class="text-content">
+      <ion-label>{{dataPersonal.cp}}</ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-no-padding" *ngIf="showText">
+    <ion-col size="2" class="text-header ion-text-center">
+      <ion-label><strong>Colonia</strong></ion-label>
+    </ion-col>
+    <ion-col class="text-content">
+      <ion-label>{{dataPersonal.colony}}</ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-no-padding" *ngIf="showText">
+    <ion-col size="2" class="text-header ion-text-right">
+      <ion-label><strong>Municipio</strong></ion-label>
+    </ion-col>
+    <ion-col class="text-content">
+      <ion-label>{{dataPersonal.municipality}}</ion-label>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-text-center" *ngIf="showText">
+    <ion-col>
+      <ion-button color="morena" shape="round" class="button-grabber" (click)="goToMember()">Enviar a
+        Formulario
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</ion-grid>

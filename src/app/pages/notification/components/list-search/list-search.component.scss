@@ -1,0 +1,39 @@
+.group-card-list{
+    margin-top: 15px !important;
+    margin-bottom: 35px !important;
+    .item-list{
+        margin-left: 9px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        border-bottom: 1px solid var(--ion-color-light-shade);
+        .content-info{
+            padding-left: 15px;
+            ion-label{
+                font-family: Poppins-Regular;
+                font-size: medium;
+                .success{
+                    color: var(--ion-color-success-shade);
+                }
+                .danger{
+                    color: var(--ion-color-danger);
+                }
+                .warning{
+                    color: var(--ion-color-warning);
+                }
+                .brown{
+                    color: var(--ion-color-danger-shade);
+                }
+            }
+            h3{
+                font-size: 14px;
+            }
+            h2{
+                font-size: 14px;
+            }
+            p{
+                font-size: 14px;
+            }
+        }
+    }
+    
+}

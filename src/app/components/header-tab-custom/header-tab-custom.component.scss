@@ -1,0 +1,119 @@
+.header-tab::after {
+    background-image: none;
+}
+
+.header-tab {
+    background-color: var(--ion-color-light) !important;
+}
+.menu-contendor{
+    padding-top: 10px;
+}
+.line-border-menu{
+    border-bottom: 1px solid rgb(192, 190, 190);
+}
+
+.toolbar-tab {
+    background-color: var(--ion-color-morena) !important;
+    padding-top: 1%;
+    padding-left: 3%;
+    padding-right: 3%;
+    padding-bottom: 2%;
+    border-bottom-left-radius: 40px;
+    box-shadow: 8px 3px 5px 1px rgba(0, 0, 0, 0.62);
+    -webkit-box-shadow: 8px 3px 5px 1px rgba(0, 0, 0, 0.62);
+    -moz-box-shadow: 8px 3px 5px 1px rgba(0, 0, 0, 0.62);
+
+    .profile-content {
+        background: none !important;
+        height: auto !important;
+
+        ion-avatar {
+            width: 40px !important;
+            height: 40px !important;
+        }
+
+        .img-profile {
+            width: 40px !important;
+            height: 40px !important;
+        }
+
+        .name-profile {
+            padding-left: 5px;
+            color: #fff;
+            font-size: 15px;
+            font-family: Poppins-SemiBold;
+        }
+    }
+
+    .col-title-content {
+        text-align: center;
+
+        .title-content {
+            color: #fff;
+            font-size: small;
+            font-family: Poppins-Medium;
+            line-height: 2px;
+        }
+
+        .title-content-especial {
+            color: #fff;
+            font-size: larger;
+            font-family: Poppins-SemiBold;
+            line-height: 2px;
+        }
+
+    }
+
+    .col-tab {
+        padding-bottom: 20px;
+    }
+
+    .tab-header {
+        padding-left: 6%;
+
+        .tab-btn {
+            --color: #fff;
+            --color-checked: var(--ion-color-medium-tint);
+            font-family: Poppins-Medium;
+            font-size: x-small;
+            pointer-events: none;
+        }
+    }
+
+    .tab-consult {
+        padding-left: 6%;
+
+        .tab-btn {
+            --color: #fff;
+            --color-checked: var(--ion-color-dark-tint);
+            font-family: Poppins-Medium;
+            font-size: x-small;
+
+        }
+
+        .segment-button-checked {
+            border-bottom: 3px solid var(--ion-color-dark);
+        }
+    }
+
+    .network {
+        padding-top: 11px;
+
+        ion-icon {
+            color: white;
+        }
+    }
+
+
+}
+
+.search-tab {
+    position: relative;
+    top: -24px;
+    --background: #fff !important;
+    --border-radius: 13px !important;
+    background: none;
+    width: fit-content;
+    left: 10%;
+    --box-shadow: 2px 3px 5px 1px rgba(0, 0, 0, 0.62);
+}

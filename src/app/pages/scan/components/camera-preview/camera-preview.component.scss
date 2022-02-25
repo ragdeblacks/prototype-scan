@@ -1,0 +1,25 @@
+.grabber{
+    position: relative;
+    top:55%
+}
+.text-info{
+    color:white;
+    --color:white;
+}
+.icon-camera{
+    --color:white;
+    color:white;
+}
+.flash{
+    --background: var(--ion-color-medium);
+    --handle-background: #fff;
+    .text-info{
+        padding-left: 20px;
+    }
+}
+.flash::before {
+    position: absolute;
+  
+    top: 16px;
+    left: 10px;
+}

@@ -1,0 +1,238 @@
+{
+    "url": "/update/historial/cdc/a.diaz/",
+    "username": "a.diaz",
+    "data": {
+        "username": "a.diaz"
+    },
+    "file": {
+        "page": "CirculoDeCreditoPage",
+        "method": "sendCDC",
+        "type": "Info"
+    },
+    "message": "Este es un mensahe de prueba",
+    "clientForm": {
+        "client": "Prueba Cliente",
+        "idDocuments": "1",
+        "addresses": "direccion prueba",
+        "customInformation": "informacion prueba"
+    },
+    "group": {
+        "id": "1"
+    },
+    "idGroup": "1",
+    "idClient": "3",
+    "timeNow": "1616188846299",
+    "timeOut": "1616239246000",
+    "timeOutFake": "1616168846299",
+    "loggetIn": "true",
+    "nip": "123456",
+    "prospecto": {
+        "username": "a.diaz"
+    },
+    "response": {
+        "status": "success",
+        "message": "Este es un mensahe de prueba",
+        "data": {
+            "username": "a.diaz",
+            "picture": "example"
+        }
+    },
+    "status": "success",
+    "groups": [
+        {
+            "id": "1",
+            "name": "Los Chidas"
+        },
+        {
+            "id": "2",
+            "name": "Los Chidas 2"
+        }
+    ],
+    "detailsGroups": {
+        "clients": [
+            {
+                "id": "1",
+                "name": "Juanita"
+            },
+            {
+                "id": "2",
+                "name": "Perenganita"
+            }
+        ]
+    },
+    "log": {
+        "origin": "home",
+        "page": "homePage",
+        "method": "loginSpore",
+        "type": "info",
+        "message": "Este es un mensahe de prueba",
+        "date": "20-03-2021"
+    },
+    "loginInfo": {
+        "data": {
+            "username": "a.diaz",
+            "picture": "example",
+            "email": "test@test.com"
+        }
+    },
+    "documento": "SOLINDIVIDUAL",
+    "formData": {
+        "value": "true"
+    },
+    "date": "20-12-2012",
+    "datetime": "20-12-2012 03:00:00",
+    "directoryEntry": {
+        "filesystem": {
+            "name": "sdcard",
+            "root": "DirectoryEntry"
+        },
+        "fullPath": "/Android/data/catchme.android/logs/",
+        "isDirectory": true,
+        "isFile": false,
+        "name": "logs",
+        "nativeURL": "file:///storage/emulated/0/Android/data/catchme.android/logs/"
+    },
+    "fileError": {
+        "code": 1,
+        "message": "NOT_FOUND_ERR"
+    },
+    "fileEntry": {
+        "filesystem": {
+            "name": "sdcard",
+            "root": "DirectoryEntry"
+        },
+        "fullPath": "/Android/data/catchme.android/logs/request_cdc.text",
+        "isDirectory": false,
+        "isFile": true,
+        "name": "request_cdc.text",
+        "nativeURL": "file:///storage/emulated/0/Android/data/catchme.android/logs/request_cdc.text"
+    },
+    "ConsultationEspanol": {
+        "FolioConsultaOtorgante": "",
+        "ImporteContrato": "1000",
+        "NumeroFirma": "928131",
+        "ApellidoPaterno": "PRUEBA",
+        "ApellidoMaterno": "SIETE",
+        "Nombres": "JUAN",
+        "FechaNacimiento": "1990-05-10",
+        "RFC": "SIPJ800107MD",
+        "CURP": "SIPJ800107MDFNBN01",
+        "ProductoRequerido": "",
+        "Direccion": "INSURGENTES SUR 1007",
+        "ColoniaPoblacion": "INSURGENTES",
+        "DelegacionMunicipio": "BENITO JUAREZ",
+        "Ciudad": "CDMX",
+        "Estado": "CDMX",
+        "CP": "11230",
+        "TimestampAprobacionTyC": "20-03-2021",
+        "TimestampAprobacionConsulta": "20-03-2021"
+    },
+    "querySepomex": {
+        "status": "success",
+        "message": "Consulta realizada correctamente",
+        "data": {
+            "municipio": "Monterrey",
+            "estado": "Nuevo León",
+            "ciudad": "Nuevo León",
+            "colonias": [
+                "San Jemo",
+                "Colinas de San Jerónimo"
+            ]
+        }
+    },
+    "querySepomexTwo": {
+        "status": "success",
+        "message": "Consulta realizada correctamente",
+        "data": {
+            "municipio": "Monterrey",
+            "estado": "Nuevo León",
+            "ciudad": "Nuevo León",
+            "colonias": [
+                "San Jemo"
+            ]
+        }
+    },
+    "dataPersonal": {
+        "nameComplete": "Juan Prueba Siete",
+        "name": "Juan",
+        "lastName": "Prueba",
+        "surname": "Siete",
+        "street": "av prueba test",
+        "state": "CDMX",
+        "colony": "la prueba siete",
+        "municipality": "Benito juarez",
+        "birthday": "14/04/1990",
+        "curp": "sipj800701mdfnbn11",
+        "cp": "54930"
+    },
+    "ocrText": {
+        "foundText": true,
+        "lines": {
+            "linetext": [
+                "MEXICONSTITUTO NACIONAL ELECTORAL",
+                "CREDENCIAL PARA VOTAR",
+                "SEXO H",
+                "NOMBRE",
+                "PRUEBA",
+                "SIETE",
+                "JUAN",
+                "DOMICLIO",
+                "INSURGENTES SUR 1007",
+                "BENITO JUAREZ 11230",
+                "BENITO JUAREZ, CDMX",
+                "CLAVE DE BLECTOR SNPRED90041415H400",
+                "ANO DE REGISTRO",
+                "2009 01",
+                "FECHA DE NACIMENTO SECCION IGENCIA",
+                "07/01/1980",
+                "CURP",
+                "SIPJ800107MDFNBN11",
+                "14104/1990",
+                "5610"
+            ]
+        }
+    },
+    "ocrTextNo": {
+        "foundText": false
+    },
+    "ocrTextBirthday": {
+        "foundText": true,
+        "lines": {
+            "linetext": [
+                "MEXICONSTITUTO NACIONAL ELECTORAL",
+                "CREDENCIAL PARA VOTAR",
+                "SEXO H",
+                "NOMBRE",
+                "PRUEBA",
+                "SIETE",
+                "JUAN",
+                "DOMICLIO",
+                "INSURGENTES SUR 1007",
+                "BENITO JUAREZ 11230",
+                "BENITO JUAREZ, CDMX",
+                "CLAVE DE BLECTOR SNPRED90041415H400",
+                "ANO DE REGISTRO",
+                "2009 01",
+                "CURP",
+                "SIPJ800107MDFNBN11",
+                "14104/1990",
+                "5610"
+            ]
+        }
+    },
+    "dataPersonal2": {
+        "nameComplete": "Juan Prueba Siete",
+        "name": "Juan",
+        "lastName": "Prueba",
+        "surname": "Siete",
+        "street": "av prueba test",
+        "state": "CDMX",
+        "city": "CDMX",
+        "colony": "la prueba siete",
+        "municipality": "Benito juarez",
+        "birthday": "14/04/1990",
+        "curp": "sipj800701mdfnbn11",
+        "cp": "54930",
+        "contractAmount": "$1,000.00"
+    }
+}

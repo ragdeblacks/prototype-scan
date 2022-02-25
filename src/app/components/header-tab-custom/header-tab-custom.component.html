@@ -1,0 +1,82 @@
+<ion-header class="header-tab">
+  <div class="toolbar-tab" color="morena">
+    <ion-grid fixed>
+      <ion-row>
+        <ion-col size="2" class="ion-no-padding menu-contendor">
+          <ion-button (click)="openFirst()" fill="clear">
+            <ion-icon name="menu-outline" size="large" color="light"></ion-icon>
+          </ion-button>
+        </ion-col>
+        <ion-col size="8">
+          <ion-text *ngIf="title!=''" class="name-profile" color="light">
+            <h5>{{title}}</h5>
+          </ion-text>
+        </ion-col>
+        <ion-col size="2" class="network">
+          <ion-button fill="clear" shape="round" (click)="goToPage(nav.notification)">
+            <ion-icon size="large" name="notifications-outline"></ion-icon>
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="typeTab=='scan'">
+        <ion-col size="12" class="col-title-content">
+          <ion-label class="title-content">
+            {{titleDescription}}
+          </ion-label>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="typeTab=='scan'">
+        <ion-col size="12">
+          <ion-toolbar color="morena">
+            <ion-segment mode="md" class="tab-header" [value]="optionSelect">
+              <ion-segment-button class="tab-btn indicator" value="scan">
+                <ion-icon name="scan-outline"></ion-icon>
+                Escanea
+              </ion-segment-button>
+              <ion-segment-button class="tab-btn" value="valid">
+                <ion-icon name="create-outline"></ion-icon>
+                Valida
+              </ion-segment-button>
+            </ion-segment>
+          </ion-toolbar>
+
+        </ion-col>
+      </ion-row>
+      
+    </ion-grid>
+  </div>
+  <ion-searchbar *ngIf="typeTab=='consult'" (ionChange)="detectChanges($event.target.value)" [(ngModel)]="searchElement"
+    class="search-tab" animated placeholder="Buscar"></ion-searchbar>
+</ion-header>
+
+<ion-menu side="start" menuId="first" contentId="main">
+  <ion-header >
+    <ion-toolbar class="user-profile" color="morena">
+      <ion-chip>
+        <ion-avatar>
+          <img src="{{picture}}" alt="profile">
+        </ion-avatar>
+        <ion-label color="light">{{usuario}}</ion-label>
+      </ion-chip>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle *ngFor="let p of appPages">
+        <ion-item *ngIf="p.title !== 'Cerrar Sesion'" lines="none" (click)="goToPage(p.url)" class="line-border-menu">
+          <ion-icon slot="start" [name]="p.icon"></ion-icon>
+          <ion-label>
+              {{p.title}}
+          </ion-label>
+        </ion-item>
+        <ion-item *ngIf="p.title === 'Cerrar Sesion'" lines="none" (click)="disconnect()" class="line-border-menu">
+          <ion-icon slot="start" [name]="p.icon"></ion-icon>
+          <ion-label>
+              {{p.title}}
+          </ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<ion-router-outlet id="main"></ion-router-outlet>

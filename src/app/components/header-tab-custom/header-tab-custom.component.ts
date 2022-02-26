@@ -19,6 +19,7 @@ import ListMenus from '../../mocks/menu.json';
 export class HeaderTabCustomComponent implements OnInit {
   @Input() optionSelect = '';
   @Input() typeTab = '';
+  @Input() typeMenu = true;
   optSelet = '';
   @Input() titleDescription = '';
   @Input() title = '';

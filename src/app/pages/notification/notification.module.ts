@@ -9,6 +9,7 @@ import { NotificationPageRoutingModule } from './notification-routing.module';
 import { NotificationPage } from './notification.page';
 import { HeaderTabCustomModule } from '@app/components/header-tab-custom/header-tab-custom.module';
 import { ListSearchModule } from './components/list-search/list-search.module';
+import { CustomFooterModule } from '@app/components/custom-footer/custom-footer.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { ListSearchModule } from './components/list-search/list-search.module';
     IonicModule,
     NotificationPageRoutingModule,
     HeaderTabCustomModule,
-    ListSearchModule
+    ListSearchModule,
+    CustomFooterModule
   ],
   declarations: [NotificationPage]
 })

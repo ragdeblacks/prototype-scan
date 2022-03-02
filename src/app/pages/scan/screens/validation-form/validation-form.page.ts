@@ -341,7 +341,7 @@ export class ValidationFormPage implements OnInit {
     });
   }
   convertRFC(cad: string): string {
-    if (cad?.length) {
+    if (!cad?.length) {
       return '';
     }
     const x = cad.substring(0, 10);

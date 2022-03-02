@@ -23,12 +23,12 @@ export class ConnectionService extends IConnection {
   }
 
   setData(info: FormInformation) {
-    if (!this.userEmail) throw Error()
+    if (!this.userEmail) throw Error();
     const params = this.fetchParams(info).append('user', this.userEmail);
     return this.http.post(UrlServices.dataUrl, params, this.Header);
   }
   getData() {
-    if (!this.userEmail) throw Error()
+    if (!this.userEmail) throw Error();
     return this.http.get<Partial<FormInformation>>(`${UrlServices.getDataUrl}/${encodeURIComponent(this.userEmail || '666')}`);
   }
 }

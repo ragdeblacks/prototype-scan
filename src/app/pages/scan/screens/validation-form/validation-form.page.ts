@@ -4,13 +4,13 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StorageEnum } from '@app/core/enum/storageEnum.enum';
 import { Sepomex } from '@app/core/models/sepomex';
 import { States } from '@app/core/models/states';
-import { DataService } from '@app/core/services/data.service';
 import StatesList from '@app/mocks/states.json';
 import { LoadingController, NavController, ToastController } from '@ionic/angular';
 import { SubSink } from 'subsink';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@awesome-cordova-plugins/native-geocoder/ngx';
 import { FormInformation } from '@app/core/models/form-information.model';
 import { ConnectionService } from '@app/core/services/connection.service';
+import { DataService } from '@app/core/services/data.service';
 
 @Component({
   selector: 'app-validation-form',
@@ -271,8 +271,8 @@ export class ValidationFormPage implements OnInit {
           etnia: this.clearString(params.etnia, 1),
           lengua: this.clearString(params.lengua, 1),
         });
-        const filterState = this.states.filter(elem => elem?.value === params.state);
-        this.stateValue = filterState[0].value;
+        const filterState = this.states?.length && this.states.filter(elem => elem?.value === params.state);
+        this.stateValue = this.stateValue && filterState[0].value;
       }
     });
   }

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { StorageEnum } from '@app/core/enum/storageEnum.enum';
 import { UrlNavigation } from '@app/core/enum/urlNavigation.enum';
 import { ConnectionService } from '@app/core/services/connection.service';
 import { DataService } from '@app/core/services/data.service';

@@ -294,7 +294,7 @@ export class ValidationFormPage implements OnInit {
 
   loadAnotherItem() {
     const userData: FormInformation = {
-      names: this.clearString(this.names.value.value, 1),
+      names: this.clearString(this.names.value, 1),
       surname: this.clearString(this.surname.value, 1),
       lastName: this.clearString(this.lastName.value, 1),
       address: this.clearString(this.address.value, 1),

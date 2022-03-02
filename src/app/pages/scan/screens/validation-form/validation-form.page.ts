@@ -266,6 +266,7 @@ export class ValidationFormPage implements OnInit {
           suburbPopulation: this.clearString(params.suburbPopulation, 1),
           state: this.clearString(params.state, 1),
           email: this.clearString(email || params.email, 0),
+          phone: this.clearString(params.phone, 0),
           facebook: this.clearString(params.facebook, 1),
           etnia: this.clearString(params.etnia, 1),
           lengua: this.clearString(params.lengua, 1),

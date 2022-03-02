@@ -6,7 +6,7 @@ import { Sepomex } from '@app/core/models/sepomex';
 import { States } from '@app/core/models/states';
 import { DataService } from '@app/core/services/data.service';
 import StatesList from '@app/mocks/states.json';
-import { NavController } from '@ionic/angular';
+import { LoadingController, NavController, ToastController } from '@ionic/angular';
 import { SubSink } from 'subsink';
 import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@awesome-cordova-plugins/native-geocoder/ngx';
 import { FormInformation } from '@app/core/models/form-information.model';
@@ -179,7 +179,9 @@ export class ValidationFormPage implements OnInit {
     public currency: CurrencyPipe,
     private dataService: DataService,
     private nativeGeocoder: NativeGeocoder,
-    private connectionService: ConnectionService
+    private connectionService: ConnectionService,
+    public loadingCtrl: LoadingController,
+    public toastCtrl: ToastController,
   ) {
     this.states = StatesList.states;
   }
@@ -292,7 +294,7 @@ export class ValidationFormPage implements OnInit {
       .catch((error: any) => console.warn(error));
   }
 
-  loadAnotherItem() {
+  async loadAnotherItem() {
     const userData: FormInformation = {
       names: this.clearString(this.names.value, 1),
       surname: this.clearString(this.surname.value, 1),
@@ -314,10 +316,16 @@ export class ValidationFormPage implements OnInit {
       location: this.location
     };
     this.dataService.setData(userData);
-    this.connectionService.setData(userData).subscribe(res => {
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    this.connectionService.setData(userData).subscribe(async (res) => {
       console.log('Data saved', res);
+      loading && loading.dismiss();
+      const toast = await this.toastCtrl.create({ message: 'Registro Guardado con éxito', duration: 3000 })
+      toast.present();
     }, err => {
       console.log(err);
+      loading && loading.dismiss();
     });
 
   }

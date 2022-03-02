@@ -11,6 +11,7 @@ import { HeaderTabCustomModule } from '@app/components/header-tab-custom/header-
 import { CustomFooterModule } from '@app/components/custom-footer/custom-footer.module';
 import { FormInputModule } from '@app/components/form-input/form-input.module';
 import { FormSelectModule } from '@app/components/form-select/form-select.module';
+import { NativeGeocoder } from '@awesome-cordova-plugins/native-geocoder/ngx';
 
 @NgModule({
   imports: [
@@ -25,7 +26,8 @@ import { FormSelectModule } from '@app/components/form-select/form-select.module
     FormSelectModule
   ],
   providers: [
-    CurrencyPipe
+    CurrencyPipe,
+    NativeGeocoder
   ],
   declarations: [ValidationFormPage]
 })

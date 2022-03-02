@@ -7,7 +7,7 @@
     (ionChange)="(labelText==='CURP')? upperCase(objForm.value) : ''"
     (keyup)="(controlName==='CP')? querySepomex($event) : ''"
     [attr.maxlength]="(controlName==='CP') ? '5' : null"
-    [type]="typeInput" ></ion-input>
+    [type]="typeInput" (ionBlur)="controlName === 'city' && onLeaveInput($event)" ></ion-input>
 </ion-item>
 <ion-note *ngIf="errors && dirty" class="error-input" color="danger">
 <p class="ion-no-padding ion-no-margin error-msg">{{getError(controlName)}}</p>

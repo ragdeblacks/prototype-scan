@@ -4,6 +4,7 @@ import { LoadingController } from '@ionic/angular';
 import { PopOverInfoComponent } from '../../pop-over-info/pop-over-info.component';
 import { LoginService } from '@app/core/services/login.service';
 import { UrlNavigation } from '@app/core/enum/urlNavigation.enum';
+import { ConnectionService } from '@app/core/services/connection.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -18,11 +19,13 @@ export class LoginPage {
     public loadingCtrl: LoadingController,
     public router: NavController,
     public popoverCtrl: PopoverController,
+    private connectionService: ConnectionService
   ) { }
   login() {
     this.loadingCtrl
       .create({
         message: 'Por favor espere...',
+        duration: 15000
       }).then((res) => {
         this.loading = res;
         this.loading.present();
@@ -35,7 +38,7 @@ export class LoginPage {
         this.loading.dismiss();
       }
       this.router.navigateForward(UrlNavigation.home);
-      
+
     }).catch((err) => {
       const msg = err.message;
       alert(msg);

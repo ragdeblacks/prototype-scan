@@ -1,13 +1,16 @@
+import { CurrencyPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { StorageEnum } from '@app/core/enum/storageEnum.enum';
 import { Sepomex } from '@app/core/models/sepomex';
 import { States } from '@app/core/models/states';
-import { NavController } from '@ionic/angular';
-import { SubSink } from 'subsink';
+import { DataService } from '@app/core/services/data.service';
 import StatesList from '@app/mocks/states.json';
-import { UrlNavigation } from '@app/core/enum/urlNavigation.enum';
-import { ActivatedRoute } from '@angular/router';
-import { CurrencyPipe } from '@angular/common';
+import { LoadingController, NavController, ToastController } from '@ionic/angular';
+import { SubSink } from 'subsink';
+import { NativeGeocoder, NativeGeocoderResult, NativeGeocoderOptions } from '@awesome-cordova-plugins/native-geocoder/ngx';
+import { FormInformation } from '@app/core/models/form-information.model';
+import { ConnectionService } from '@app/core/services/connection.service';
 
 @Component({
   selector: 'app-validation-form',
@@ -77,47 +80,7 @@ export class ValidationFormPage implements OnInit {
       pattern: 'Formato de correo no es correcto'
     }
   };
-  userProspect = this.formBuilder.group({
-    lastName: ['', Validators.compose([
-      Validators.maxLength(30),
-      Validators.pattern('[a-zA-Z-ZñÑáéíóúÁÉÍÓÚ." "]*'), // acepta solo carcteres y .(punto)
-      Validators.required])],
-    surname: ['', Validators.compose([
-      Validators.maxLength(30),
-      Validators.pattern('[a-zA-Z-ZñÑáéíóúÁÉÍÓÚ." "]*')])], // acepta solo carcteres y .(punto)
-    names: ['', Validators.compose([
-      Validators.maxLength(30), // 30 digitos maximos
-      Validators.pattern('[a-zA-Z-ZñÑáéíóúÁÉÍÓÚ." "]*'), // acepta solo carcteres y .(punto)
-      Validators.required])],
-    RFC: ['', Validators.required],
-    CURP: ['', Validators.compose([
-      Validators.required, // Campo requerido
-      Validators.minLength(18), // 18 digitos minimo
-      Validators.maxLength(18)])], // 18 digitos maximos
-    address: ['', Validators.required],
-    suburbPopulation: ['', Validators.required],
-    delegationMunicipality: ['', Validators.required],
-    city: ['', Validators.required],
-    state: [''],
-    CP: ['', Validators.compose([
-      Validators.required,
-      Validators.minLength(5),
-      Validators.maxLength(5),
-      Validators.pattern('[^\d]*')])],
-    birthday: ['', Validators.required],
-    contractAmount: ['', Validators.required],
-    phone: ['', Validators.compose([
-      Validators.required, // Campo requerido
-      Validators.minLength(10), // 10 digitos minimo
-      Validators.maxLength(10), // 10 digitos maximos
-      Validators.pattern('[0-9]*')])], // solo acepta digitos numericos
-    email:['', Validators.compose([
-      Validators.required,
-      Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')])],
-    facebook: ['https://www.facebook.com/'],
-    lengua: [''],
-    etnia: ['']
-  });
+
   get lengua() {
     return this.userProspect.get('lengua');
   }
@@ -208,18 +171,66 @@ export class ValidationFormPage implements OnInit {
     }]
   };
   amountDat = '';
+  userProspect: FormGroup;
+  location: { x: string | number, y: string | number };
   constructor(
     public navCtrl: NavController,
     public formBuilder: FormBuilder,
     public currency: CurrencyPipe,
-    public routeActiv: ActivatedRoute,
+    private dataService: DataService,
+    private nativeGeocoder: NativeGeocoder,
+    private connectionService: ConnectionService,
+    public loadingCtrl: LoadingController,
+    public toastCtrl: ToastController,
   ) {
     this.states = StatesList.states;
   }
 
   ngOnInit() {
     this.title = 'Verifica que los datos son correctos, agrega tus datos de contacto y redes sociales. Asegúrate que no tengas algún campo vacío para poder continuar';
+    this.initForm();
     this.getDataPersonal();
+  }
+
+  initForm() {
+    this.userProspect = this.formBuilder.group({
+      lastName: ['', Validators.compose([
+        Validators.maxLength(30),
+        Validators.pattern('[a-zA-Z-ZñÑáéíóúÁÉÍÓÚ." "]*'), // acepta solo carcteres y .(punto)
+        Validators.required])],
+      surname: ['', Validators.compose([
+        Validators.maxLength(30),
+        Validators.pattern('[a-zA-Z-ZñÑáéíóúÁÉÍÓÚ." "]*')])], // acepta solo carcteres y .(punto)
+      names: ['', Validators.compose([
+        Validators.maxLength(30), // 30 digitos maximos
+        Validators.pattern('[a-zA-Z-ZñÑáéíóúÁÉÍÓÚ." "]*'), // acepta solo carcteres y .(punto)
+        Validators.required])],
+      RFC: ['', Validators.required],
+      CURP: ['', Validators.compose([
+        Validators.required, // Campo requerido
+        Validators.minLength(18), // 18 digitos minimo
+        Validators.maxLength(18)])], // 18 digitos maximos
+      address: ['', Validators.required],
+      suburbPopulation: ['', Validators.required],
+      delegationMunicipality: ['', Validators.required],
+      city: ['', Validators.required],
+      state: [''],
+      CP: ['', Validators.compose([
+        Validators.required,
+        Validators.minLength(5),
+        Validators.maxLength(5),
+        Validators.pattern('[^\d]*')])],
+      birthday: ['', Validators.required],
+      phone: ['', Validators.compose([
+        Validators.required, // Campo requerido
+        Validators.minLength(10), // 10 digitos minimo
+        Validators.maxLength(10), // 10 digitos maximos
+        Validators.pattern('[0-9]*')])], // solo acepta digitos numericos
+      email: ['', Validators.compose([Validators.required])],
+      facebook: ['https://www.facebook.com/'],
+      lengua: [''],
+      etnia: ['']
+    });
   }
 
   goToUrl(url: string): void {
@@ -232,80 +243,98 @@ export class ValidationFormPage implements OnInit {
     return this.errorMessage[controlName][key.toString()];
   }
 
-  // changeAmount(event) {
-  //   if (event.detail.data !== null) {
-  //     const amount = event.detail.data;
-  //     this.amountDat = this.amountDat + amount;
-  //     const newAMount = this.currency.transform(this.amountDat, '$', 'symbol-narrow', '1.2-2');
-  //     this.userProspect.patchValue({
-  //       contractAmount: newAMount
-  //     });
-  //   } else {
-  //     this.amountDat = this.amountDat.substring(0, this.amountDat.length - 1);
-  //     const newAMount = this.currency.transform(this.amountDat, '$', 'symbol-narrow', '1.2-2');
-  //     this.userProspect.patchValue({
-  //       contractAmount: newAMount
-  //     });
-  //   }
-  // }
-
   getDataPersonal() {
-    this.routeActiv.queryParams.subscribe((params: any) => {
+    const savedInfo = localStorage.getItem(StorageEnum.userData);
+    const email = savedInfo && JSON.parse(savedInfo)?.email;
+    this.dataService.data$.subscribe((params) => {
+      if (params.CP) {
+        this.getLatLon(params.city);
+      }
       if (Object.values(params).length !== 0) {
-        const rfc: string = this.convertRFC(params.curp);
+        const rfc: string = this.convertRFC(params.CURP);
         this.userProspect.patchValue({
-          names: this.clearString(params.name, 1),
+          names: this.clearString(params.names, 1),
           surname: this.clearString(params.surname, 1),
           lastName: this.clearString(params.lastName, 1),
-          address: this.clearString(params.street, 1),
-          CP: this.clearString(params.cp, 0),
-          CURP: this.clearString(params.curp, 0),
+          address: this.clearString(params.address, 1),
+          CP: this.clearString(params.CP, 0),
+          CURP: this.clearString(params.CURP, 0),
           RFC: rfc,
-          city: this.clearString(params.municipality, 1),
-          delegationMunicipality: this.clearString(params.municipality, 1),
-          suburbPopulation: this.clearString(params.colony, 1),
+          birthday: params.birthday,
+          city: this.clearString(params.city, 1),
+          delegationMunicipality: this.clearString(params.delegationMunicipality, 1),
+          suburbPopulation: this.clearString(params.suburbPopulation, 1),
           state: this.clearString(params.state, 1),
-          email: this.clearString(params.email, 1),
+          email: this.clearString(email || params.email, 0),
+          phone: this.clearString(params.phone, 0),
           facebook: this.clearString(params.facebook, 1),
           etnia: this.clearString(params.etnia, 1),
           lengua: this.clearString(params.lengua, 1),
         });
-        const filterState = this.states.filter(elem => elem.value === params.state);
+        const filterState = this.states.filter(elem => elem?.value === params.state);
         this.stateValue = filterState[0].value;
       }
-
     });
   }
 
-  loadAnotherItem(type: number) {
-    this.setDataPersonal();
-   ///// aqui se guardara la informacion en la base de mike
+  getLatLon(city: string) {
+    let options: NativeGeocoderOptions = {
+      useLocale: true,
+      defaultLocale: 'es_MX',
+      maxResults: 4
+    };
+    this.nativeGeocoder.forwardGeocode(city, options)
+      .then((result: NativeGeocoderResult[]) => {
+        const fromMex = result.find(el => el.countryCode === 'MX')
+        if (fromMex) {
+          this.location = { x: fromMex.longitude, y: fromMex.latitude }
+        } else {
+          this.location = null;
+        }
+      })
+      .catch((error: any) => console.warn(error));
+  }
+
+  async loadAnotherItem() {
+    const userData: FormInformation = {
+      names: this.clearString(this.names.value, 1),
+      surname: this.clearString(this.surname.value, 1),
+      lastName: this.clearString(this.lastName.value, 1),
+      address: this.clearString(this.address.value, 1),
+      CP: this.clearString(this.CP.value, 0),
+      CURP: this.clearString(this.CURP.value, 0),
+      RFC: this.RFC.value,
+      birthday: this.birthday.value,
+      city: this.clearString(this.city.value, 1),
+      delegationMunicipality: this.clearString(this.delegationMunicipality.value, 1),
+      suburbPopulation: this.clearString(this.suburbPopulation.value, 1),
+      state: this.clearString(this.state.value, 1),
+      email: this.clearString(this.email.value, 0),
+      phone: this.phone.value,
+      facebook: this.clearString(this.facebook.value, 1),
+      etnia: this.clearString(this.etnia.value, 1),
+      lengua: this.clearString(this.lengua.value, 1),
+      location: this.location
+    };
+    this.dataService.setData(userData);
+    const loading = await this.loadingCtrl.create();
+    await loading.present();
+    this.connectionService.setData(userData).subscribe(async (res) => {
+      console.log('Data saved', res);
+      loading && loading.dismiss();
+      const toast = await this.toastCtrl.create({ message: 'Registro Guardado con éxito', duration: 3000 })
+      toast.present();
+    }, err => {
+      console.log(err);
+      loading && loading.dismiss();
+    });
 
   }
 
-  setDataPersonal() {
-    const dataPersonal = [
-      this.clearString(this.CURP.value, 1),
-      this.clearString(this.names.value, 1),
-      this.clearString(this.lastName.value, 1),
-      this.clearString(this.surname.value, 1),
-      this.birthday.value,
-      this.clearString(this.RFC.value, 1),
-      this.CP.value,
-      this.clearString(this.city.value, 1),
-      this.stateValue,
-      this.clearString(this.delegationMunicipality.value, 1),
-      this.clearString(this.suburbPopulation.value, 1),
-      this.clearString(this.address.value, 1),
-      this.phone.value,
-      this.clearString(this.email.value, 1),
-      this.clearString(this.facebook.value, 1),
-      this.clearString(this.etnia.value, 1),
-      this.clearString(this.lengua.value, 1),
-    ];
-  }
-
-  clearString(text: string, type: number) {
+  clearString(text: string, type: number): string {
+    if (!(text?.length)) {
+      return '';
+    }
     this.textTrim = text;
     const cad = (type === 1) ? this.textTrim.replace(/\s+/gi, ' ').toUpperCase() : this.textTrim.replace(/\s+/gi, ' ');
     return cad;
@@ -319,6 +348,9 @@ export class ValidationFormPage implements OnInit {
     });
   }
   convertRFC(cad: string): string {
+    if (!cad?.length) {
+      return '';
+    }
     const x = cad.substring(0, 10);
     return x;
   }
@@ -329,7 +361,7 @@ export class ValidationFormPage implements OnInit {
         zipcode: cp
       };
       this.colonyElements = [];
-     
+
     }
   }
 

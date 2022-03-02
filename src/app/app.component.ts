@@ -17,8 +17,8 @@ export class AppComponent {
   }
   initializeApp() {
     this.platform.ready().then(() => {
-      this.statusBar.styleDefault();
-      this.statusBar.backgroundColorByHexString('#B0C438');
+      this.statusBar.styleLightContent();
+      this.statusBar.backgroundColorByHexString('#b3282d');
       this.splashScreen.hide();
     });
   }

@@ -19,6 +19,7 @@ export class FormInputComponent {
   @Input() brmaskerInputl = {};
   @Output() addRFC = new EventEmitter<any>();
   @Output() onquerySepomex = new EventEmitter<any>();
+  @Output() onblur = new EventEmitter<string>();
 
   getError(controlName: any): string {
     const element = this.myForm.get(controlName);
@@ -26,10 +27,14 @@ export class FormInputComponent {
     return this.errorMessage[controlName][key.toString()];
   }
   upperCase(data: string): any {
-    this.addRFC.emit({data});
+    this.addRFC.emit({ data });
   }
   querySepomex(data: string): any {
-    this.onquerySepomex.emit({data});
+    this.onquerySepomex.emit({ data });
   }
-
+  onLeaveInput(e) {
+    if (e?.target?.value) {
+      this.onblur.emit(e.target.value)
+    }
+  }
 }

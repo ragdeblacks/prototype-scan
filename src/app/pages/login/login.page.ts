@@ -37,6 +37,7 @@ export class LoginPage {
       if (this.loading) {
         this.loading.dismiss();
       }
+      this.connectionService.validateData();
       this.router.navigateForward(UrlNavigation.home);
 
     }).catch((err) => {

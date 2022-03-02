@@ -224,9 +224,7 @@ export class ValidationFormPage implements OnInit {
         Validators.minLength(10), // 10 digitos minimo
         Validators.maxLength(10), // 10 digitos maximos
         Validators.pattern('[0-9]*')])], // solo acepta digitos numericos
-      email: ['', Validators.compose([
-        Validators.required,
-        Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')])],
+      email: ['', Validators.compose([Validators.required])],
       facebook: ['https://www.facebook.com/'],
       lengua: [''],
       etnia: ['']
@@ -265,7 +263,7 @@ export class ValidationFormPage implements OnInit {
           delegationMunicipality: this.clearString(params.delegationMunicipality, 1),
           suburbPopulation: this.clearString(params.suburbPopulation, 1),
           state: this.clearString(params.state, 1),
-          email: this.clearString(email || params.email, 1),
+          email: this.clearString(email || params.email, 0),
           facebook: this.clearString(params.facebook, 1),
           etnia: this.clearString(params.etnia, 1),
           lengua: this.clearString(params.lengua, 1),
@@ -308,7 +306,7 @@ export class ValidationFormPage implements OnInit {
       delegationMunicipality: this.clearString(this.delegationMunicipality.value, 1),
       suburbPopulation: this.clearString(this.suburbPopulation.value, 1),
       state: this.clearString(this.state.value, 1),
-      email: this.clearString(this.email.value, 1),
+      email: this.clearString(this.email.value, 0),
       phone: this.phone.value,
       facebook: this.clearString(this.facebook.value, 1),
       etnia: this.clearString(this.etnia.value, 1),

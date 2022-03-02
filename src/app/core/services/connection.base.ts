@@ -16,7 +16,7 @@ export abstract class IConnection {
         return {
             headers: new HttpHeaders().set(
                 'Content-Type',
-                'text/plain'
+                'application/json'
             ),
         };
     }

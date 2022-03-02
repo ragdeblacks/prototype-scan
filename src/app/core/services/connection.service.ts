@@ -24,7 +24,7 @@ export class ConnectionService extends IConnection {
 
   setData(info: FormInformation) {
     if (!this.userEmail) throw Error();
-    const params = this.fetchParams(info).append('user', this.userEmail);
+    const params = JSON.stringify(info)//this.fetchParams(info).append('user', this.userEmail);
     return this.http.post(UrlServices.dataUrl, params, this.Header);
   }
   getData() {
